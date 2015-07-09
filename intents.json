@@ -1,0 +1,14 @@
+{
+  "intents": [
+    {
+      "intent": "GetRecipe",
+      "slots": [
+        {
+          "name": "Recipe",
+          "type": "LITERAL"
+        }
+      ]
+    }
+  ]
+}
+
