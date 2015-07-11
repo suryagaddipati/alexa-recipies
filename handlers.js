@@ -1,28 +1,19 @@
+import Response from './response.js';
 export default{
-  onSessionStarted(sessionStartedRequest, session) {
-    console.log("onSessionStarted requestId=" + sessionStartedRequest.requestId
-                + ", sessionId=" + session.sessionId);
+  onSessionStarted(event) {
+    console.log(`New session ${event.session.id}`);
   },
-  onLaunch(launchRequest, session, callback) {
-    console.log("onLaunch requestId=" + launchRequest.requestId + ", sessionId=" + session.sessionId);
-
+  LaunchRequest(event,context) {
+    const rsp = Response(context,event.session);
+    rsp.ask('Hi What are you cooking?', "You can say Sambar"); 
   },
-  onIntent(intentRequest, session, callback) {
-    console.log("onIntent requestId=" + intentRequest.requestId + ", sessionId=" + session.sessionId);
-
-    const intent = intentRequest.intent;
-    const intentName = intentRequest.intent.name;
-
+  IntentRequest(event,context) {
+    const rsp = Response(context,event.session);
+    rsp.tell('hello Intent meow meow'); 
   },
-  onSessionEnded(sessionEndedRequest, session) {
-    console.log("onSessionEnded requestId=" + sessionEndedRequest.requestId + ", sessionId=" + session.sessionId);
-  },
-  buildResponse(sessionAttributes, speechletResponse) {
-    return {
-      version: "0.1",
-      sessionAttributes: sessionAttributes,
-      response: speechletResponse
-    }
+  SessionEndedRequest(event,context) {
+    const rsp = Response(context,event.session);
+    rsp.tell('Session Ended'); 
   }
 }
 
