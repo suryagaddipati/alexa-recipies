@@ -1,13 +1,14 @@
 import handler from  './handlers.js';
-export default function (event, context) {
+import Event from './event.js';
+export default function (srcEvent, context) {
   try {
-    console.log("event.session.application.applicationId=" + event.session.application.applicationId);
+    const event = Event(srcEvent);
+    console.log(`event.session.application.applicationId=${event.applicationId}` );
 
-    if (event.session.new) {
-      handler.onSessionStarted({requestId: event.request.requestId}, event.session);
+    if (event.isNew) {
+      handler.onSessionStarted(event);
     }
-
-    if (event.request.type === "LaunchRequest") {
+    if (event.request.isLaunchRequest) {
       handler.onLaunch(event.request,
                        event.session,
                        function callback(sessionAttributes, speechletResponse) {

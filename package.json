@@ -8,10 +8,11 @@
     "babel-core": "latest",
     "babel-eslint": "^3.0.1",
     "babel-loader": "latest",
+    "chai": "^3.0.0",
     "webpack": "1.9.5"
   },
   "scripts": {
-    "build": "$(npm bin)/webpack --release=true  --colors --progress  recipe.js && cat recipe.out.js | pbcopy"
-
+    "build": "$(npm bin)/webpack --release=true  --colors --progress  recipe.js && cat recipe.out.js | pbcopy",
+    "test": "mocha --compilers js:mocha-babel"
   }
 }
