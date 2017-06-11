@@ -4,12 +4,12 @@
   "author": "Surya Gaddipati",
   "description": "Echo app for my recipies",
   "dependencies": {
-    "babel": "^5.0.0",
+    "babel": "^6.23.0",
     "babel-core": "latest",
-    "babel-eslint": "^3.0.1",
+    "babel-eslint": "^7.2.3",
     "babel-loader": "latest",
-    "chai": "^3.0.0",
-    "webpack": "1.9.5"
+    "chai": "^4.0.2",
+    "webpack": "2.6.1"
   },
   "scripts": {
     "build": "$(npm bin)/webpack --release=true  --colors --progress  recipe.js && cat recipe.out.js | pbcopy",
